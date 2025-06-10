@@ -22,8 +22,15 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-warmBeige/80 backdrop-blur-sm border-t border-terracotta/20 mt-auto">
-      <div className="max-w-7xl mx-auto px-4 pt-6 pb-0">
+    <footer className="relative bg-warmBeige/80 backdrop-blur-sm border-t border-terracotta/20 mt-auto">
+      <Image
+        src="/images/parchment-texture.png"
+        alt="Parchment Texture"
+        fill
+        className="object-cover opacity-60"
+        priority
+      />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 pt-6 pb-0">
         <div className="flex flex-col items-center justify-center text-center">
           <div className="flex flex-col space-y-1">
             <span className="underline font-semibold">{t('footer.contactInfo')}</span>
@@ -37,7 +44,7 @@ const Footer = () => {
           <div className="text-sm mt-2">{t('footer.copyright')}</div>
         </div>
       </div>
-      <div className="w-full">
+      <div className="relative w-full">
         <Image
           src="/images/flower-border.png"
           alt="Flower border"
@@ -45,6 +52,7 @@ const Footer = () => {
           height={300}
           className="w-full h-auto object-contain"
           priority
+          sizes="(max-width: 768px) 100vw, 2400px"
         />
       </div>
     </footer>

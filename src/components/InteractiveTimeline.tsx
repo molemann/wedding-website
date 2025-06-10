@@ -74,7 +74,14 @@ export default function InteractiveTimeline({ events, className = '' }: Timeline
             <div className="flex justify-end">
               <div className="bg-warmIvory/90 rounded-lg shadow-lg border border-terracotta/20 px-6 py-8 flex flex-col items-center opacity-60 scale-90 transition-all duration-500 max-w-xs w-[260px]">
                 <div className="w-20 h-20 relative mb-4">
-                  <Image src={events[current - 1].image} alt={t(events[current - 1].titleKey)} fill className="object-contain rounded-xl" />
+                  <Image 
+                    src={events[current - 1].image} 
+                    alt={t(events[current - 1].titleKey)} 
+                    fill 
+                    className="object-contain rounded-xl"
+                    sizes="(max-width: 768px) 80px, 80px"
+                    priority={current === 1}
+                  />
                 </div>
                 <div className="text-xl font-heading text-terracotta mb-2">{events[current - 1].time}</div>
                 <div className="text-base font-bold text-deepNavy mb-1 text-center">{t(events[current - 1].titleKey)}</div>
@@ -85,7 +92,14 @@ export default function InteractiveTimeline({ events, className = '' }: Timeline
           <div className="flex justify-center z-10">
             <div className="bg-warmIvory/90 rounded-lg shadow-lg border border-terracotta/20 px-8 py-8 flex flex-col items-center transition-all duration-500 max-w-md w-[350px]">
               <div className="w-24 h-24 relative mb-4">
-                <Image src={events[current].image} alt={t(events[current].titleKey)} fill className="object-contain rounded-xl" />
+                <Image 
+                  src={events[current].image} 
+                  alt={t(events[current].titleKey)} 
+                  fill 
+                  className="object-contain rounded-xl"
+                  sizes="(max-width: 768px) 96px, 96px"
+                  priority
+                />
               </div>
               <div className="text-2xl font-heading text-terracotta mb-2">{events[current].time}</div>
               <div className="text-lg font-bold text-deepNavy mb-1 text-center">{t(events[current].titleKey)}</div>
@@ -102,7 +116,14 @@ export default function InteractiveTimeline({ events, className = '' }: Timeline
             <div className="flex justify-start">
               <div className="bg-warmIvory/90 rounded-lg shadow-lg border border-terracotta/20 px-6 py-8 flex flex-col items-center opacity-60 scale-90 transition-all duration-500 max-w-xs w-[260px]">
                 <div className="w-20 h-20 relative mb-4">
-                  <Image src={events[current + 1].image} alt={t(events[current + 1].titleKey)} fill className="object-contain rounded-xl" />
+                  <Image 
+                    src={events[current + 1].image} 
+                    alt={t(events[current + 1].titleKey)} 
+                    fill 
+                    className="object-contain rounded-xl"
+                    sizes="(max-width: 768px) 80px, 80px"
+                    priority={current === events.length - 2}
+                  />
                 </div>
                 <div className="text-xl font-heading text-terracotta mb-2">{events[current + 1].time}</div>
                 <div className="text-base font-bold text-deepNavy mb-1 text-center">{t(events[current + 1].titleKey)}</div>
@@ -123,7 +144,14 @@ export default function InteractiveTimeline({ events, className = '' }: Timeline
             >
               <div className="bg-warmIvory/90 rounded-lg shadow-lg border border-terracotta/20 px-8 py-8 flex flex-col items-center w-full max-w-md mx-auto">
                 <div className="w-24 h-24 relative mb-4">
-                  <Image src={events[current].image} alt={t(events[current].titleKey)} fill className="object-contain rounded-xl" />
+                  <Image 
+                    src={events[current].image} 
+                    alt={t(events[current].titleKey)} 
+                    fill 
+                    className="object-contain rounded-xl"
+                    sizes="(max-width: 768px) 96px, 96px"
+                    priority
+                  />
                 </div>
                 <div className="text-2xl font-heading text-terracotta mb-2">{events[current].time}</div>
                 <div className="text-lg font-bold text-deepNavy mb-1 text-center">{t(events[current].titleKey)}</div>

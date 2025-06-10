@@ -16,10 +16,10 @@ module.exports = {
         cream: '#FDFBF7',
       },
       fontFamily: {
-        heading: ['var(--font-heading)'],
-        body: ['var(--font-body)'],
-        serif: ['Cormorant Garamond', 'serif'],
-        'tan-pearl': ['TAN Pearl', 'serif'],
+        heading: ['var(--font-heading)', 'Playfair Display', 'serif'],
+        body: ['var(--font-body)', 'Montserrat', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Cormorant Garamond', 'serif'],
+        'tan-pearl': ['TAN Pearl', 'Cormorant Garamond', 'serif'],
       },
       backgroundImage: {
         'parchment-texture': "url('/images/parchment-texture.png')",

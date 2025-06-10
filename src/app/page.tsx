@@ -167,6 +167,14 @@ export default function Home() {
               className="flex flex-col items-center justify-center flex-grow max-w-2xl mx-auto px-4"
             >
               <div className="text-center mb-4 md:mb-6">
+                <Image
+                  src="/images/MP-logo.png"
+                  alt="M & P Logo"
+                  width={200}
+                  height={200}
+                  className="mx-auto mb-4"
+                  priority
+                />
                 <h2 className="font-tan-pearl text-4xl md:text-6xl text-[#64564a] leading-tight tracking-wide">
                   MIRIAM <span className="text-3xl md:text-4xl font-tan-pearl">&</span> PABLO
                 </h2>
@@ -182,8 +190,8 @@ export default function Home() {
                 className="text-center mb-0 relative z-20"
                 style={{ marginBottom: 'clamp(-2rem, -5vh, -1rem)' }}
               >
-                  <p className="text-2xl md:text-4xl text-[#64564a] mb-4 font-serif">{t('wedding.date')}</p>
-                </motion.div>
+                <p className="text-2xl md:text-4xl text-[#64564a] mb-4 font-serif">{t('wedding.date')}</p>
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -192,12 +200,25 @@ export default function Home() {
       {/* Details Section */}
       <section className="flex flex-col md:flex-row w-full">
         {/* Our Picture Section */}
-        <section id="our-picture" className="w-full md:w-1/2 min-h-[500px] md:min-h-[600px] flex items-center justify-center bg-cover bg-center md:bg-top" style={{ backgroundImage: "url('/images/save-the-date.png.png')" }}>
-          {/* Optionally, add overlay or content here */}
+        <section id="our-picture" className="w-full md:w-1/2 min-h-[500px] md:min-h-[600px] flex items-center justify-center bg-cover bg-center md:bg-top relative">
+          <Image
+            src="/images/save-the-date.png"
+            alt="Save the Date"
+            fill
+            className="object-cover"
+            priority
+          />
         </section>
         {/* Details Info Section */}
-        <section id="details-info" className="w-full md:w-1/2 px-4 sm:px-6 lg:px-8 text-white bg-[url('/images/red-texture-bg.png')] bg-cover bg-center" style={{ paddingTop: 50 }}>
-          <div className="max-w-6xl mx-auto">
+        <section id="details-info" className="w-full md:w-1/2 px-4 sm:px-6 lg:px-8 text-white relative">
+          <Image
+            src="/images/red-texture-bg.png"
+            alt="Red Texture Background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="relative z-10 max-w-6xl mx-auto" style={{ paddingTop: 50 }}>
             <motion.h1 
               className="text-4xl md:text-6xl font-serif text-center text-white mb-6"
               initial={{ opacity: 0, y: 20 }}
@@ -245,8 +266,14 @@ export default function Home() {
         </section>
       </section>
 
-      <section id="details-itinerary" className="px-4 sm:px-6 lg:px-8 pt-10 pb-1 bg-[url('/images/parchment-texture.png')] bg-cover bg-center bg-no-repeat relative">
-        <div className="absolute inset-0 bg-white/80 pointer-events-none z-0"></div>
+      <section id="details-itinerary" className="px-4 sm:px-6 lg:px-8 pt-10 pb-1 relative">
+        <Image
+          src="/images/parchment-texture.png"
+          alt="Parchment Texture"
+          fill
+          className="object-cover opacity-60"
+          priority
+        />
         <div className="relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="max-w-2xl mx-auto mb-16">
