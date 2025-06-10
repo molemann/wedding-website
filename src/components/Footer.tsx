@@ -39,7 +39,7 @@ const Footer = () => {
       </div>
       <div className="w-full">
         <Image
-          src="/images/flower-border.png"
+          src="/wedding-website/images/flower-border.png"
           alt="Flower border"
           width={2400}
           height={300}

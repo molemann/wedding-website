@@ -76,7 +76,7 @@ export default function Navigation() {
 
   return (
     <motion.nav 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[url('/images/parchment-texture.png')] bg-cover bg-center`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[url('/wedding-website/images/parchment-texture.png')] bg-cover bg-center`}
       animate={{
         backgroundColor: hasScrolled ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0)',
         backdropFilter: hasScrolled ? 'blur(8px)' : 'blur(0px)',
@@ -153,7 +153,7 @@ export default function Navigation() {
         <div className="absolute left-1/2 transform -translate-x-1/2">
           <a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="block">
             <Image
-              src="/images/MP-logo.png"
+              src="/wedding-website/images/MP-logo.png"
               alt="M & P"
               width={60}
               height={60}
