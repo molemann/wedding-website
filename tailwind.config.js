@@ -22,8 +22,8 @@ module.exports = {
         'tan-pearl': ['TAN Pearl', 'serif'],
       },
       backgroundImage: {
-        'parchment-texture': "url('/wedding-website/images/parchment-texture.png')",
-        'red-texture': "url('/wedding-website/images/red-texture-bg.png')",
+        'parchment-texture': "url('/images/parchment-texture.png')",
+        'red-texture': "url('/images/red-texture-bg.png')",
       },
     },
   },
