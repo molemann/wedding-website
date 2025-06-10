@@ -76,7 +76,7 @@ export default function Navigation() {
 
   return (
     <motion.nav 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 relative`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[url('/images/parchment-texture.png')] bg-cover bg-center`}
       animate={{
         backgroundColor: hasScrolled ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0)',
         backdropFilter: hasScrolled ? 'blur(8px)' : 'blur(0px)',
@@ -84,13 +84,6 @@ export default function Navigation() {
       }}
       transition={{ duration: 0.3 }}
     >
-      <Image
-        src="/images/parchment-texture.png"
-        alt="Parchment Texture"
-        fill
-        className="object-cover opacity-60"
-        priority
-      />
       <div className="absolute inset-0 bg-white/80 pointer-events-none z-0"></div>
       <div className="relative max-w-7xl mx-auto flex items-center justify-between h-[80px] px-4 sm:px-6 lg:px-8 z-10">
         {/* Desktop Navigation - Left Side */}
@@ -166,7 +159,6 @@ export default function Navigation() {
               height={60}
               className="w-auto h-[60px] mt-[10px]"
               priority
-              sizes="(max-width: 768px) 60px, 60px"
             />
           </a>
         </div>
@@ -194,7 +186,7 @@ export default function Navigation() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-white/90 backdrop-blur-sm"
+            className="md:hidden bg-white"
           >
             <div className="px-4 py-2 space-y-2">
               {links.map((link) => {

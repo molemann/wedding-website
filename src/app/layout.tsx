@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Montserrat, Cormorant_Garamond } from "next/font/google";
+import { Playfair_Display, Montserrat } from "next/font/google";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import "./globals.css";
@@ -11,25 +11,12 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-heading",
   display: 'swap',
-  preload: true,
-  fallback: ['serif'],
 });
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-body",
   display: 'swap',
-  preload: true,
-  fallback: ['sans-serif'],
-});
-
-const cormorant = Cormorant_Garamond({
-  weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: 'swap',
-  preload: true,
-  fallback: ['serif'],
 });
 
 export const metadata: Metadata = {
@@ -61,14 +48,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${montserrat.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${montserrat.variable}`}>
       <head>
         <link rel="icon" type="image/png" sizes="32x32" href="/images/doge-favicon.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/images/doge-favicon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/images/doge-favicon.png" />
         <meta name="msapplication-TileImage" content="/images/doge-favicon.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/TAN-Pearl.otf" as="font" type="font/otf" crossOrigin="anonymous" />
       </head>
       <body className="font-body text-deepNavy relative min-h-screen flex flex-col">
         {/* Parchment Background for all pages */}

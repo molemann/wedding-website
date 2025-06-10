@@ -48,18 +48,18 @@ body {
   }
 
   .font-heading {
-    font-family: var(--font-heading), 'Playfair Display', serif;
+    @apply font-['Playfair_Display'] font-medium;
   }
 
   .font-body {
-    font-family: var(--font-body), 'Montserrat', sans-serif;
+    @apply font-['Montserrat'] font-light;
   }
 
   .font-serif {
-    font-family: var(--font-serif), 'Cormorant Garamond', serif;
+    @apply font-['Cormorant_Garamond'] font-light;
   }
   
   .font-tan-pearl {
-    font-family: 'TAN Pearl', 'Cormorant Garamond', serif;
+    @apply font-['TAN_Pearl'];
   }
 }
