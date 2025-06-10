@@ -33,7 +33,8 @@ jobs:
         run: |
           rm -rf node_modules
           rm -f package-lock.json
-          npm install
+          npm cache clean --force
+          npm install --legacy-peer-deps
           npm list
       - name: Build with Next.js
         run: |
