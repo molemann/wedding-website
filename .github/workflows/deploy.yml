@@ -31,6 +31,8 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: |
+          rm -rf node_modules
+          rm -f package-lock.json
           npm install
           npm list
       - name: Build with Next.js
