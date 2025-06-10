@@ -20,6 +20,16 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Miriam & Pablo",
   description: "Join us for our wedding celebration in Madrid",
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
   icons: {
     icon: [
       { url: '/images/doge-favicon.png', type: 'image/png' }
