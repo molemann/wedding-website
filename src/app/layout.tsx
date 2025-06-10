@@ -10,11 +10,17 @@ import Image from 'next/image';
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-heading",
+  display: 'swap',
+  preload: true,
+  fallback: ['serif'],
 });
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-body",
+  display: 'swap',
+  preload: true,
+  fallback: ['sans-serif'],
 });
 
 export const metadata: Metadata = {
@@ -52,6 +58,8 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/wedding-website/images/doge-favicon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/wedding-website/images/doge-favicon.png" />
         <meta name="msapplication-TileImage" content="/wedding-website/images/doge-favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="font-body text-deepNavy relative min-h-screen flex flex-col">
         {/* Parchment Background for all pages */}

@@ -32,7 +32,7 @@ export default function LanguageToggle() {
             initial={{ scale: 0.9 }}
             animate={{ scale: language === 'en' ? 1 : 0.9 }}
           >
-            <img src="/images/flag-uk.png" alt="UK Flag" width={24} height={24} style={{ display: 'inline-block' }} />
+            <img src="/wedding-website/images/flag-uk.png" alt="UK Flag" width={24} height={24} style={{ display: 'inline-block' }} />
           </motion.div>
           {language === 'en' && (
             <motion.div
@@ -56,7 +56,7 @@ export default function LanguageToggle() {
             initial={{ scale: 0.9 }}
             animate={{ scale: language === 'es' ? 1 : 0.9 }}
           >
-            <img src="/images/flag-es.png" alt="Spain Flag" width={24} height={24} style={{ display: 'inline-block' }} />
+            <img src="/wedding-website/images/flag-es.png" alt="Spain Flag" width={24} height={24} style={{ display: 'inline-block' }} />
           </motion.div>
           {language === 'es' && (
             <motion.div

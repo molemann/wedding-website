@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'TAN Pearl';
-  src: url('/fonts/TAN-Pearl.otf') format('opentype');
+  src: url('/wedding-website/fonts/TAN-Pearl.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -48,18 +48,18 @@ body {
   }
 
   .font-heading {
-    @apply font-['Playfair_Display'] font-medium;
+    font-family: var(--font-heading);
   }
 
   .font-body {
-    @apply font-['Montserrat'] font-light;
+    font-family: var(--font-body);
   }
 
   .font-serif {
-    @apply font-['Cormorant_Garamond'] font-light;
+    font-family: 'Cormorant Garamond', serif;
   }
   
   .font-tan-pearl {
-    @apply font-['TAN_Pearl'];
+    font-family: 'TAN Pearl', serif;
   }
 }
