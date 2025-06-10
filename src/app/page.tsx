@@ -18,7 +18,7 @@ const scheduleEvents = [
     locationKey: 'schedule.departure.location',
     descriptionKey: 'schedule.departure.description',
     icon: '🚌',
-    image: '/wedding-website/images/autocar-ida.png'
+    image: '/images/autocar-ida.png'
   },
   {
     time: '16:00',
@@ -26,7 +26,7 @@ const scheduleEvents = [
     locationKey: 'schedule.ceremony.location',
     descriptionKey: 'schedule.ceremony.description',
     icon: '💒',
-    image: '/wedding-website/images/ceremonia.png'
+    image: '/images/ceremonia.png'
   },
   {
     time: '17:30',
@@ -34,7 +34,7 @@ const scheduleEvents = [
     locationKey: 'schedule.cocktail.location',
     descriptionKey: 'schedule.cocktail.description',
     icon: '🍸',
-    image: '/wedding-website/images/cocktail.png'
+    image: '/images/cocktail.png'
   },
   {
     time: '19:30',
@@ -42,7 +42,7 @@ const scheduleEvents = [
     locationKey: 'schedule.banquet.location',
     descriptionKey: 'schedule.banquet.description',
     icon: '🍽️',
-    image: '/wedding-website/images/banquete.png'
+    image: '/images/banquete.png'
   },
   {
     time: '22:00',
@@ -50,7 +50,7 @@ const scheduleEvents = [
     locationKey: 'schedule.party.location',
     descriptionKey: 'schedule.party.description',
     icon: '💃',
-    image: '/wedding-website/images/fiesta.png'
+    image: '/images/fiesta.png'
   },
   {
     time: '02:00',
@@ -58,7 +58,7 @@ const scheduleEvents = [
     locationKey: 'schedule.return.location',
     descriptionKey: 'schedule.return.description',
     icon: '🚌',
-    image: '/wedding-website/images/autocar-vuelta.png'
+    image: '/images/autocar-vuelta.png'
   }
 ]
 
@@ -156,7 +156,7 @@ export default function Home() {
   return (
     <div className="relative">
       {/* Hero Section */}
-      <section id="home" className="relative flex flex-col items-center justify-between overflow-hidden pt-[250px] pb-[350px] bg-[url('/wedding-website/images/parchment-texture.png')] bg-cover bg-center">
+      <section id="home" className="relative flex flex-col items-center justify-between overflow-hidden pt-[250px] pb-[350px] bg-[url('/images/parchment-texture.png')] bg-cover bg-center">
         <div className="absolute inset-0 bg-white/80 pointer-events-none z-0"></div>
         <div className="relative z-10 w-full h-full">
           <div className="relative z-10 container mx-auto flex flex-col items-center justify-between h-full pt-4 pb-0 md:py-1">
@@ -192,11 +192,11 @@ export default function Home() {
       {/* Details Section */}
       <section className="flex flex-col md:flex-row w-full">
         {/* Our Picture Section */}
-        <section id="our-picture" className="w-full md:w-1/2 min-h-[500px] md:min-h-[600px] flex items-center justify-center bg-cover bg-center md:bg-top" style={{ backgroundImage: "url('/wedding-website/images/save-the-date.png.png')" }}>
+        <section id="our-picture" className="w-full md:w-1/2 min-h-[500px] md:min-h-[600px] flex items-center justify-center bg-cover bg-center md:bg-top" style={{ backgroundImage: "url('/images/save-the-date.png.png')" }}>
           {/* Optionally, add overlay or content here */}
         </section>
         {/* Details Info Section */}
-        <section id="details-info" className="w-full md:w-1/2 px-4 sm:px-6 lg:px-8 text-white bg-[url('/wedding-website/images/red-texture-bg.png')] bg-cover bg-center" style={{ paddingTop: 50 }}>
+        <section id="details-info" className="w-full md:w-1/2 px-4 sm:px-6 lg:px-8 text-white bg-[url('/images/red-texture-bg.png')] bg-cover bg-center" style={{ paddingTop: 50 }}>
           <div className="max-w-6xl mx-auto">
             <motion.h1 
               className="text-4xl md:text-6xl font-serif text-center text-white mb-6"
@@ -245,7 +245,7 @@ export default function Home() {
         </section>
       </section>
 
-      <section id="details-itinerary" className="px-4 sm:px-6 lg:px-8 pt-10 pb-1 bg-[url('/wedding-website/images/parchment-texture.png')] bg-cover bg-center bg-no-repeat relative">
+      <section id="details-itinerary" className="px-4 sm:px-6 lg:px-8 pt-10 pb-1 bg-[url('/images/parchment-texture.png')] bg-cover bg-center bg-no-repeat relative">
         <div className="absolute inset-0 bg-white/80 pointer-events-none z-0"></div>
         <div className="relative z-10">
           <div className="max-w-6xl mx-auto">
@@ -266,7 +266,7 @@ export default function Home() {
       </section>
 
       {/* RSVP Section */}
-      <section id="rsvp" className="py-20 px-4 sm:px-6 lg:px-8 bg-[url('/wedding-website/images/red-texture-bg.png')] bg-cover bg-center">
+      <section id="rsvp" className="py-20 px-4 sm:px-6 lg:px-8 bg-[url('/images/red-texture-bg.png')] bg-cover bg-center">
         <div className="max-w-2xl mx-auto">
           <motion.h1 
             className="text-5xl md:text-7xl font-serif text-center text-white mb-6"
@@ -296,7 +296,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                style={{ backgroundImage: "url('/wedding-website/images/parchment-texture.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+                style={{ backgroundImage: "url('/images/parchment-texture.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
               >
                 <div className="absolute inset-0 bg-white/80 z-0 rounded-lg pointer-events-none"></div>
                 <div className="relative z-10">
