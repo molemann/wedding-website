@@ -3,9 +3,15 @@ const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
-    domains: ['github.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+      },
+    ],
   },
   trailingSlash: true,
+  distDir: 'out',
 };
 
 module.exports = nextConfig; 

@@ -16,6 +16,7 @@ concurrency:
 
 env:
   NODE_ENV: production
+  NEXT_TELEMETRY_DISABLED: 1
 
 jobs:
   build:
@@ -29,10 +30,13 @@ jobs:
           node-version: "18"
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm list
       - name: Build with Next.js
         run: |
           npm run build
+          ls -la ./out
           touch ./out/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
