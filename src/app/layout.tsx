@@ -32,10 +32,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/images/doge-favicon.png', type: 'image/png' }
+      { url: '/wedding-website/images/doge-favicon.png', type: 'image/png' }
     ],
     apple: [
-      { url: '/images/doge-favicon.png', sizes: '180x180', type: 'image/png' }
+      { url: '/wedding-website/images/doge-favicon.png', sizes: '180x180', type: 'image/png' }
     ]
   }
 };
@@ -48,16 +48,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${montserrat.variable}`}>
       <head>
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/doge-favicon.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/images/doge-favicon.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/images/doge-favicon.png" />
-        <meta name="msapplication-TileImage" content="/images/doge-favicon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/wedding-website/images/doge-favicon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/wedding-website/images/doge-favicon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/wedding-website/images/doge-favicon.png" />
+        <meta name="msapplication-TileImage" content="/wedding-website/images/doge-favicon.png" />
       </head>
       <body className="font-body text-deepNavy relative min-h-screen flex flex-col">
         {/* Parchment Background for all pages */}
         <div className="fixed inset-0 z-0">
           <Image
-            src="/images/parchment-texture.png"
+            src="/wedding-website/images/parchment-texture.png"
             alt="Parchment texture"
             fill
             className="object-cover opacity-60"
