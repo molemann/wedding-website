@@ -1,0 +1,25 @@
+{
+  "Tailwind CSS: @apply": {
+    "prefix": "tw-apply",
+    "body": [
+      "@apply $1;"
+    ],
+    "description": "Tailwind CSS @apply directive"
+  },
+  "Tailwind CSS: @layer": {
+    "prefix": "tw-layer",
+    "body": [
+      "@layer $1 {",
+      "  $2",
+      "}"
+    ],
+    "description": "Tailwind CSS @layer directive"
+  },
+  "Tailwind CSS: @tailwind": {
+    "prefix": "tw-tailwind",
+    "body": [
+      "@tailwind $1;"
+    ],
+    "description": "Tailwind CSS @tailwind directive"
+  }
+} 

@@ -1,0 +1,12 @@
+[
+  {
+    "key": "ctrl+shift+p",
+    "command": "workbench.action.showCommands",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+p",
+    "command": "workbench.action.showCommands",
+    "when": "!editorTextFocus"
+  }
+] 

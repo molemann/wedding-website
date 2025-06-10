@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+@font-face {
+  font-family: 'TAN Pearl';
+  src: url('/fonts/TAN-Pearl.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 61, 64, 91;
+  --background-start-rgb: 244, 241, 222;
+  --background-end-rgb: 253, 251, 247;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  min-height: 100vh;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+  
+  p, span, div {
+    @apply font-body;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-terracotta text-white px-8 py-3 rounded-full hover:bg-burntOrange transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-terracotta text-terracotta px-8 py-3 rounded-full hover:bg-terracotta hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+  }
+
+  .font-heading {
+    @apply font-['Playfair_Display'] font-medium;
+  }
+
+  .font-body {
+    @apply font-['Montserrat'] font-light;
+  }
+
+  .font-serif {
+    @apply font-['Cormorant_Garamond'] font-light;
+  }
+  
+  .font-tan-pearl {
+    @apply font-['TAN_Pearl'];
+  }
+}

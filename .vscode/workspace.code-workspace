@@ -1,0 +1,38 @@
+{
+  "folders": [
+    {
+      "path": ".."
+    }
+  ],
+  "settings": {
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "postcss.validate": false,
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "files.associations": {
+      "*.css": "postcss"
+    },
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true
+    },
+    "css.lint.unknownAtRules": "ignore",
+    "css.customData": [".vscode/css-data.json"],
+    "css.lint.validProperties": [],
+    "css.lint.validMediaFeatureNames": [],
+    "css.lint.validMediaFeatureValues": [],
+    "css.lint.validMediaQueryKeywords": [],
+    "css.lint.validPseudoClasses": [],
+    "css.lint.validPseudoElements": [],
+    "css.lint.validSelectors": [],
+    "css.lint.validUnits": []
+  },
+  "extensions": {
+    "recommendations": [
+      "bradlc.vscode-tailwindcss",
+      "csstools.postcss"
+    ]
+  }
+} 
