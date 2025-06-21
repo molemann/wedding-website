@@ -98,31 +98,3 @@ body {
   height: 100%;
   width: auto;
 }
-@media (max-width: 768px) {
-  .frame-top {
-    content: url('/images/frame-mobile-top.svg');
-  }
-  .frame-bottom {
-    content: url('/images/frame-mobile-bottom.svg');
-  }
-  .frame-left {
-    content: url('/images/frame-mobile-left.svg');
-  }
-  .frame-right {
-    content: url('/images/frame-mobile-right.svg');
-  }
-}
-@media (min-width: 769px) {
-  .frame-top {
-    content: url('/images/frame-desktop-top.svg');
-  }
-  .frame-bottom {
-    content: url('/images/frame-desktop-bottom.svg');
-  }
-  .frame-left {
-    content: url('/images/frame-desktop-left.svg');
-  }
-  .frame-right {
-    content: url('/images/frame-desktop-right.svg');
-  }
-}

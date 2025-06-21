@@ -9,6 +9,7 @@ import { AnimatePresence } from 'framer-motion'
 import { MapIcon, CalendarIcon, ClockIcon, SunIcon } from '@heroicons/react/24/outline'
 import Confetti from 'react-confetti'
 import { useWindowSize } from 'react-use'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 const scheduleEvents = [
   {
@@ -101,6 +102,7 @@ const DressCode = () => {
 export default function Home() {
   const { t } = useLanguage()
   const { width, height } = useWindowSize()
+  const isMobile = useMediaQuery('(max-width: 768px)')
   const [formData, setFormData] = useState({
     name: '',
     attending: '',
@@ -157,10 +159,30 @@ export default function Home() {
       {/* Hero Section */}
       <section id="home" className="relative flex flex-col items-center justify-between overflow-hidden pt-[250px] pb-[350px] bg-[url('/images/parchment-texture.png')] bg-cover bg-center">
         {/* Decorative Frame - Desktop by default, switches to mobile via CSS */}
-        <img className="frame-svg frame-top" src="/images/frame-desktop-top.svg" alt="" aria-hidden="true" />
-        <img className="frame-svg frame-bottom" src="/images/frame-desktop-bottom.svg" alt="" aria-hidden="true" />
-        <img className="frame-svg frame-left" src="/images/frame-desktop-left.svg" alt="" aria-hidden="true" />
-        <img className="frame-svg frame-right" src="/images/frame-desktop-right.svg" alt="" aria-hidden="true" />
+        <img 
+          className="frame-svg frame-top" 
+          src={isMobile ? "/images/frame-mobile-top.svg" : "/images/frame-desktop-top.svg"} 
+          alt="" 
+          aria-hidden="true" 
+        />
+        <img 
+          className="frame-svg frame-bottom" 
+          src={isMobile ? "/images/frame-mobile-bottom.svg" : "/images/frame-desktop-bottom.svg"} 
+          alt="" 
+          aria-hidden="true" 
+        />
+        <img 
+          className="frame-svg frame-left" 
+          src={isMobile ? "/images/frame-mobile-left.svg" : "/images/frame-desktop-left.svg"} 
+          alt="" 
+          aria-hidden="true" 
+        />
+        <img 
+          className="frame-svg frame-right" 
+          src={isMobile ? "/images/frame-mobile-right.svg" : "/images/frame-desktop-right.svg"} 
+          alt="" 
+          aria-hidden="true" 
+        />
         <div className="absolute inset-0 bg-white/80 pointer-events-none z-0"></div>
         <div className="relative z-10 w-full h-full">
           <div className="relative z-10 container mx-auto flex flex-col items-center justify-between h-full pt-4 pb-0 md:py-1">
