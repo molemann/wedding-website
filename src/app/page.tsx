@@ -156,6 +156,11 @@ export default function Home() {
     <div className="relative">
       {/* Hero Section */}
       <section id="home" className="relative flex flex-col items-center justify-between overflow-hidden pt-[250px] pb-[350px] bg-[url('/images/parchment-texture.png')] bg-cover bg-center">
+        {/* Decorative Frame - Desktop by default, switches to mobile via CSS */}
+        <img className="frame-svg frame-top" src="/images/frame-desktop-top.svg" alt="" aria-hidden="true" />
+        <img className="frame-svg frame-bottom" src="/images/frame-desktop-bottom.svg" alt="" aria-hidden="true" />
+        <img className="frame-svg frame-left" src="/images/frame-desktop-left.svg" alt="" aria-hidden="true" />
+        <img className="frame-svg frame-right" src="/images/frame-desktop-right.svg" alt="" aria-hidden="true" />
         <div className="absolute inset-0 bg-white/80 pointer-events-none z-0"></div>
         <div className="relative z-10 w-full h-full">
           <div className="relative z-10 container mx-auto flex flex-col items-center justify-between h-full pt-4 pb-0 md:py-1">
