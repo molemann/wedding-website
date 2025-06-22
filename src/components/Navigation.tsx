@@ -188,13 +188,17 @@ export default function Navigation() {
     <motion.nav 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300`}
       animate={{
-        backgroundColor: hasScrolled ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0)',
-        backdropFilter: hasScrolled ? 'blur(8px)' : 'blur(0px)',
-        boxShadow: hasScrolled ? '0 1px 3px rgba(0, 0, 0, 0.1)' : 'none'
+        backgroundColor: (hasScrolled || isOpen) ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0)',
+        backdropFilter: (hasScrolled || isOpen) ? 'blur(8px)' : 'blur(0px)',
+        boxShadow: (hasScrolled || isOpen) ? '0 1px 3px rgba(0, 0, 0, 0.1)' : 'none'
       }}
       transition={{ duration: 0.3 }}
     >
-      <div className="absolute inset-0 bg-white/80 pointer-events-none z-0"></div>
+      <motion.div 
+        className="absolute inset-0 bg-white/80 pointer-events-none z-0"
+        animate={{ opacity: (hasScrolled || isOpen) ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+      />
       <div className="relative max-w-7xl mx-auto flex items-center justify-between h-[80px] px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Desktop Navigation - Left Side */}
@@ -248,14 +252,14 @@ export default function Navigation() {
           <a 
             href="#details-info" 
             onClick={(e) => handleLinkClick(e, '#details-info')}
-            className="px-4 py-2 border border-[#64564a] text-[#64564a] hover:bg-[#64564a] hover:text-white transition-all duration-300 rounded-md font-serif text-base cursor-pointer"
+            className="px-4 py-2 bg-white/80 border border-white/30 text-[#64564a] hover:bg-white hover:shadow-lg hover:border-terracotta/50 transition-all duration-300 rounded-md font-serif text-base cursor-pointer shadow-md"
           >
             {t('view.details')}
           </a>
           <a 
             href="#rsvp" 
             onClick={(e) => handleLinkClick(e, '#rsvp')}
-            className="px-4 py-2 border border-[#64564a] text-[#64564a] hover:bg-[#64564a] hover:text-white transition-all duration-300 rounded-md font-serif text-base cursor-pointer"
+            className="px-4 py-2 bg-white/80 border border-white/30 text-[#64564a] hover:bg-white hover:shadow-lg hover:border-terracotta/50 transition-all duration-300 rounded-md font-serif text-base cursor-pointer shadow-md"
           >
             {t('rsvp')}
           </a>

@@ -22,8 +22,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="relative bg-[url('/images/parchment-texture.png')] bg-cover bg-center bg-no-repeat border-t border-terracotta/20 mt-auto">
-      {/* Background overlay to match itinerary section */}
+    <footer className="relative bg-[url('/images/parchment-texture.png')] bg-cover bg-center bg-no-repeat mt-auto">      {/* Background overlay to match itinerary section */}
       <div className="absolute inset-0 bg-white/80 pointer-events-none z-0"></div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 pt-6 pb-0">

@@ -72,7 +72,7 @@ export default function RootLayout({
           <div className="relative z-10 flex flex-col min-h-screen">
             <LanguageToggle />
             <Navigation />
-            <main className="flex-grow pt-16">
+            <main className="flex-grow">
               {children}
             </main>
             <Footer />

@@ -183,33 +183,29 @@ export default function Home() {
   return (
     <div className="relative">
       {/* Hero Section */}
-      <section id="home" className="relative flex flex-col items-center justify-between overflow-hidden pt-[250px] pb-[350px] bg-[url('/images/parchment-texture.png')] bg-cover bg-center">
-        {/* Decorative Frame - Desktop by default, switches to mobile via CSS */}
-        <img 
-          className="frame-svg frame-top" 
-          src={isMobile ? "/images/frame-mobile-top.svg" : "/images/frame-desktop-top.svg"} 
-          alt="" 
-          aria-hidden="true" 
-        />
-        <img 
-          className="frame-svg frame-bottom" 
-          src={isMobile ? "/images/frame-mobile-bottom.svg" : "/images/frame-desktop-bottom.svg"} 
-          alt="" 
-          aria-hidden="true" 
-        />
-        <img 
-          className="frame-svg frame-left" 
-          src={isMobile ? "/images/frame-mobile-left.svg" : "/images/frame-desktop-left.svg"} 
-          alt="" 
-          aria-hidden="true" 
-        />
-        <img 
-          className="frame-svg frame-right" 
-          src={isMobile ? "/images/frame-mobile-right.svg" : "/images/frame-desktop-right.svg"} 
-          alt="" 
-          aria-hidden="true" 
-        />
-        <div className="absolute inset-0 bg-white/80 pointer-events-none z-0"></div>
+      <section 
+        id="home" 
+        className={`relative flex flex-col items-center overflow-hidden ${
+          isMobile 
+            ? 'h-screen justify-center' 
+            : 'justify-between pt-[250px] pb-[450px]'
+        }`}
+      >
+        {/* Background Video */}
+        <video 
+          key={isMobile ? 'mobile' : 'desktop'}
+          className="absolute top-0 left-0 w-full h-full object-cover object-bottom"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source 
+            src={isMobile ? '/images/mobile-video.mp4' : '/images/desktop-video.mp4'} 
+            type="video/mp4" 
+          />
+        </video>
+
         <div className="relative z-10 w-full h-full">
           <div className="relative z-10 container mx-auto flex flex-col items-center justify-between h-full pt-4 pb-0 md:py-1">
             <motion.div
@@ -219,11 +215,11 @@ export default function Home() {
               className="flex flex-col items-center justify-center flex-grow max-w-2xl mx-auto px-4"
             >
               <div className="text-center mb-4 md:mb-6">
-                <h2 className="font-tan-pearl text-4xl md:text-6xl text-[#64564a] leading-tight tracking-wide">
+                <h2 className="font-tan-pearl text-4xl md:text-6xl text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.4)] leading-tight tracking-wide">
                   MIRIAM <span className="text-3xl md:text-4xl font-tan-pearl">&</span> PABLO
                 </h2>
                 <div className="mt-2 mb-2">
-                  <span className="font-serif text-3xl md:text-5xl text-[#64564a]">{t('we.say')}</span>
+                  <span className="font-serif text-3xl md:text-5xl text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.4)]">{t('we.say')}</span>
                 </div>
               </div>
 
@@ -234,7 +230,7 @@ export default function Home() {
                 className="text-center mb-0 relative z-20"
                 style={{ marginBottom: 'clamp(-2rem, -5vh, -1rem)' }}
               >
-                  <p className="text-2xl md:text-4xl text-[#64564a] mb-4 font-serif">{t('wedding.date')}</p>
+                  <p className="text-2xl md:text-4xl text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.4)] mb-4 font-serif">{t('wedding.date')}</p>
                 </motion.div>
             </motion.div>
           </div>
@@ -243,18 +239,14 @@ export default function Home() {
 
       {/* Details Section */}
       <section className="flex flex-col md:flex-row w-full">
-        {/* Our Picture Section */}
-        <section id="our-picture" className="w-full md:w-1/2 min-h-[500px] md:min-h-[600px] flex items-center justify-center bg-cover bg-center md:bg-top" style={{ backgroundImage: "url('/images/save-the-date.png.png')" }}>
-          {/* Optionally, add overlay or content here */}
-        </section>
         {/* Details Info Section */}
-        <section id="details-info" className="w-full md:w-1/2 px-4 sm:px-6 lg:px-8 text-white relative bg-[url('/images/parchment-texture.png')] bg-cover bg-center bg-no-repeat" style={{ paddingTop: 50 }}>
-          {/* Background overlay with #8E354A color */}
-          <div className="absolute inset-0 bg-[#8E354A] opacity-85"></div>
+        <section id="details-info" className="w-full md:w-1/2 px-4 sm:px-6 lg:px-8 text-deepNavy relative bg-[url('/images/parchment-texture.png')] bg-cover bg-center bg-no-repeat" style={{ paddingTop: 50 }}>
+          {/* Background overlay */}
+          <div className="absolute inset-0 bg-[rgba(244,241,222,0.9)]"></div>
           
           <div className="relative z-10 max-w-6xl mx-auto">
             <motion.h1 
-              className="text-4xl md:text-6xl font-serif text-center text-white mb-6"
+              className="text-4xl md:text-6xl font-serif text-center text-deepNavy mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -263,18 +255,18 @@ export default function Home() {
             </motion.h1>
 
             <motion.div
-              className="mb-0 text-center text-white"
+              className="mb-0 text-center text-deepNavy"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <div className="mb-6 text-xl text-center text-white">
+              <div className="mb-6 text-xl text-center text-deepNavy">
                 {t('wedding.subtitle')}
               </div>
             </motion.div>
 
             <motion.div
-              className="mb-16 text-white"
+              className="mb-16 text-deepNavy"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -292,11 +284,15 @@ export default function Home() {
                   className="w-full h-[350px] md:h-[400px] rounded-2xl border-none"
                 ></iframe>
               </div>
-              <div className="text-center font-serif text-xl mt-4 text-white">
-                <span className="font-serif font-bold text-white">Dirección:</span> Carretera de la Coruña, km 44. 28440, Guadarrama (Madrid)
+              <div className="text-center font-serif text-xl mt-4 text-deepNavy">
+                <span className="font-serif font-bold text-deepNavy">Dirección:</span> Carretera de la Coruña, km 44. 28440, Guadarrama (Madrid)
               </div>
             </motion.div>
           </div>
+        </section>
+        {/* Our Picture Section */}
+        <section id="our-picture" className="w-full md:w-1/2 min-h-[500px] md:min-h-[600px] flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('/images/our-picture.jpg')" }}>
+          {/* Optionally, add overlay or content here */}
         </section>
       </section>
 
@@ -322,12 +318,12 @@ export default function Home() {
 
       {/* RSVP Section */}
       <section id="rsvp" className="py-20 px-4 sm:px-6 lg:px-8 relative bg-[url('/images/parchment-texture.png')] bg-cover bg-center bg-no-repeat">
-        {/* Background overlay with #8E354A color */}
-        <div className="absolute inset-0 bg-[#8E354A] opacity-85"></div>
+        {/* Background overlay */}
+        <div className="absolute inset-0 bg-[rgba(244,241,222,0.9)]"></div>
         
         <div className="relative z-10 max-w-2xl mx-auto">
           <motion.h1 
-            className="text-5xl md:text-7xl font-serif text-center text-white mb-6"
+            className="text-5xl md:text-7xl font-serif text-center text-deepNavy mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -336,7 +332,7 @@ export default function Home() {
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl text-center text-white mb-8"
+            className="text-lg md:text-xl text-center text-deepNavy mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -508,10 +504,10 @@ export default function Home() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                <h2 className="text-3xl font-serif font-bold text-white mb-4">
+                <h2 className="text-3xl font-serif font-bold text-deepNavy mb-4">
                   {isAttending ? t('rsvp.thanks.yes') : t('rsvp.thanks.no')}
                 </h2>
-                <p className="text-lg md:text-xl text-center text-white mb-0 font-serif">
+                <p className="text-lg md:text-xl text-center text-deepNavy mb-0 font-serif">
                   {!isAttending && t('rsvp.miss.you')}
                 </p>
                 <button
