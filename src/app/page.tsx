@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useLanguage } from './context/LanguageContext'
 import Image from 'next/image'
 import InteractiveTimeline from '@/components/InteractiveTimeline'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { MapIcon, CalendarIcon, ClockIcon, SunIcon } from '@heroicons/react/24/outline'
 import Confetti from 'react-confetti'
@@ -13,7 +13,7 @@ import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 const scheduleEvents = [
   {
-    time: '15:00',
+    time: '12:30',
     titleKey: 'schedule.departure',
     locationKey: 'schedule.departure.location',
     descriptionKey: 'schedule.departure.description',
@@ -21,7 +21,15 @@ const scheduleEvents = [
     image: '/images/autocar-ida.png'
   },
   {
-    time: '16:00',
+    time: '13:30',
+    titleKey: 'schedule.guest.reception',
+    locationKey: 'schedule.guest.reception.location',
+    descriptionKey: 'schedule.guest.reception.description',
+    icon: '👥',
+    image: '/images/ceremonia.png'
+  },
+  {
+    time: '14:00',
     titleKey: 'schedule.ceremony',
     locationKey: 'schedule.ceremony.location',
     descriptionKey: 'schedule.ceremony.description',
@@ -29,7 +37,7 @@ const scheduleEvents = [
     image: '/images/ceremonia.png'
   },
   {
-    time: '17:30',
+    time: '14:30',
     titleKey: 'schedule.cocktail',
     locationKey: 'schedule.cocktail.location',
     descriptionKey: 'schedule.cocktail.description',
@@ -37,7 +45,7 @@ const scheduleEvents = [
     image: '/images/cocktail.png'
   },
   {
-    time: '19:30',
+    time: '16:00',
     titleKey: 'schedule.banquet',
     locationKey: 'schedule.banquet.location',
     descriptionKey: 'schedule.banquet.description',
@@ -45,7 +53,7 @@ const scheduleEvents = [
     image: '/images/banquete.png'
   },
   {
-    time: '22:00',
+    time: '18:00',
     titleKey: 'schedule.party',
     locationKey: 'schedule.party.location',
     descriptionKey: 'schedule.party.description',
@@ -53,7 +61,7 @@ const scheduleEvents = [
     image: '/images/fiesta.png'
   },
   {
-    time: '02:00',
+    time: '22:15',
     titleKey: 'schedule.return',
     locationKey: 'schedule.return.location',
     descriptionKey: 'schedule.return.description',
@@ -115,6 +123,24 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null)
   const [showLeaves, setShowLeaves] = useState(false)
   const { language, setLanguage } = useLanguage()
+
+  // Handle hash-based navigation
+  useEffect(() => {
+    const handleHashNavigation = () => {
+      const hash = window.location.hash
+      if (hash) {
+        // Wait a bit for the page to load, then scroll to the section
+        setTimeout(() => {
+          const target = document.querySelector(hash)
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' })
+          }
+        }, 500)
+      }
+    }
+
+    handleHashNavigation()
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -222,8 +248,11 @@ export default function Home() {
           {/* Optionally, add overlay or content here */}
         </section>
         {/* Details Info Section */}
-        <section id="details-info" className="w-full md:w-1/2 px-4 sm:px-6 lg:px-8 text-white bg-[url('/images/red-texture-bg.png')] bg-cover bg-center" style={{ paddingTop: 50 }}>
-          <div className="max-w-6xl mx-auto">
+        <section id="details-info" className="w-full md:w-1/2 px-4 sm:px-6 lg:px-8 text-white relative bg-[url('/images/parchment-texture.png')] bg-cover bg-center bg-no-repeat" style={{ paddingTop: 50 }}>
+          {/* Background overlay with #8E354A color */}
+          <div className="absolute inset-0 bg-[#8E354A] opacity-85"></div>
+          
+          <div className="relative z-10 max-w-6xl mx-auto">
             <motion.h1 
               className="text-4xl md:text-6xl font-serif text-center text-white mb-6"
               initial={{ opacity: 0, y: 20 }}
@@ -292,8 +321,11 @@ export default function Home() {
       </section>
 
       {/* RSVP Section */}
-      <section id="rsvp" className="py-20 px-4 sm:px-6 lg:px-8 bg-[url('/images/red-texture-bg.png')] bg-cover bg-center">
-        <div className="max-w-2xl mx-auto">
+      <section id="rsvp" className="py-20 px-4 sm:px-6 lg:px-8 relative bg-[url('/images/parchment-texture.png')] bg-cover bg-center bg-no-repeat">
+        {/* Background overlay with #8E354A color */}
+        <div className="absolute inset-0 bg-[#8E354A] opacity-85"></div>
+        
+        <div className="relative z-10 max-w-2xl mx-auto">
           <motion.h1 
             className="text-5xl md:text-7xl font-serif text-center text-white mb-6"
             initial={{ opacity: 0, y: 20 }}
@@ -479,10 +511,8 @@ export default function Home() {
                 <h2 className="text-3xl font-serif font-bold text-white mb-4">
                   {isAttending ? t('rsvp.thanks.yes') : t('rsvp.thanks.no')}
                 </h2>
-                <p className="text-lg md:text-xl text-center text-white mb-8 font-serif">
-                  {isAttending 
-                    ? t('rsvp.details.later')
-                    : t('rsvp.miss.you')}
+                <p className="text-lg md:text-xl text-center text-white mb-0 font-serif">
+                  {!isAttending && t('rsvp.miss.you')}
                 </p>
                 <button
                   className="mt-6 px-6 py-2 bg-white text-terracotta font-serif rounded-md shadow hover:bg-terracotta hover:text-white transition-colors"
