@@ -188,15 +188,15 @@ export default function Navigation() {
     <motion.nav 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300`}
       animate={{
-        backgroundColor: (hasScrolled || isOpen) ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0)',
-        backdropFilter: (hasScrolled || isOpen) ? 'blur(8px)' : 'blur(0px)',
-        boxShadow: (hasScrolled || isOpen) ? '0 1px 3px rgba(0, 0, 0, 0.1)' : 'none'
+        backgroundColor: hasScrolled ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0)',
+        backdropFilter: hasScrolled ? 'blur(8px)' : 'blur(0px)',
+        boxShadow: hasScrolled ? '0 1px 3px rgba(0, 0, 0, 0.1)' : 'none'
       }}
       transition={{ duration: 0.3 }}
     >
       <motion.div 
         className="absolute inset-0 bg-white/80 pointer-events-none z-0"
-        animate={{ opacity: (hasScrolled || isOpen) ? 1 : 0 }}
+        animate={{ opacity: hasScrolled ? 1 : 0 }}
         transition={{ duration: 0.3 }}
       />
       <div className="relative max-w-7xl mx-auto flex items-center justify-between h-[80px] px-4 sm:px-6 lg:px-8 z-10">

@@ -26,7 +26,7 @@ const scheduleEvents = [
     locationKey: 'schedule.guest.reception.location',
     descriptionKey: 'schedule.guest.reception.description',
     icon: '👥',
-    image: '/images/ceremonia.png'
+    image: '/images/Recepción.png'
   },
   {
     time: '14:00',
@@ -271,7 +271,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              <div className="relative w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-xl border-2 border-terracotta/20">
+              <div className="relative w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-xl">
                 <iframe
                   title="Finca Miravalle Map"
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6054.239442272923!2d-4.0510803079658935!3d40.649291257262206!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd41735dfd5c9b83%3A0x4e6c0cac8f01aabf!2sFinca%20Miravalle%20-%20Restaurante%20Miravalle%20en%20la%20Sierra%20de%20Guadarrama!5e0!3m2!1ses!2sus!4v1746990810721!5m2!1ses!2sus"
