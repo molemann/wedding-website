@@ -33,7 +33,7 @@ jobs:
         run: |
           rm -rf node_modules
           npm cache clean --force
-          npm install --legacy-peer-deps
+          npm ci
           npm list
       - name: Build with Next.js
         run: |
