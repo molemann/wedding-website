@@ -201,7 +201,7 @@ export default function Home() {
           playsInline
         >
           <source 
-            src={isMobile ? '/images/mobile-video.mp4' : '/images/desktop-video.mp4'} 
+            src={isMobile ? "/images/mobile-video.mp4" : "/images/desktop-video.mp4"} 
             type="video/mp4" 
           />
         </video>
