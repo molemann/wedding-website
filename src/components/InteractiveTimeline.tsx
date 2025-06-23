@@ -89,7 +89,6 @@ export default function InteractiveTimeline({ events, className = '' }: Timeline
               </div>
               <div className="text-2xl font-heading text-terracotta mb-2">{events[current].time}</div>
               <div className="text-lg font-bold text-deepNavy mb-1 text-center">{t(events[current].titleKey)}</div>
-              {events[current].locationKey && <div className="text-sm text-terracotta mb-1 text-center">{t(events[current].locationKey)}</div>}
               {events[current].descriptionKey && <div className="text-xs text-gray-600 mb-2 text-center">{t(events[current].descriptionKey)}</div>}
               {/* RSVP link for bus events */}
               {(events[current].titleKey.toLowerCase().includes('bus') || events[current].titleKey.toLowerCase().includes('autocar')) && (
@@ -127,7 +126,6 @@ export default function InteractiveTimeline({ events, className = '' }: Timeline
                 </div>
                 <div className="text-2xl font-heading text-terracotta mb-2">{events[current].time}</div>
                 <div className="text-lg font-bold text-deepNavy mb-1 text-center">{t(events[current].titleKey)}</div>
-                {events[current].locationKey && <div className="text-sm text-terracotta mb-1 text-center">{t(events[current].locationKey)}</div>}
                 {events[current].descriptionKey && <div className="text-xs text-gray-600 mb-2 text-center">{t(events[current].descriptionKey)}</div>}
                 {/* RSVP link for bus events */}
                 {(events[current].titleKey.toLowerCase().includes('bus') || events[current].titleKey.toLowerCase().includes('autocar')) && (

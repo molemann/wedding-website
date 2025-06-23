@@ -61,7 +61,7 @@ const scheduleEvents = [
     image: '/images/fiesta.png'
   },
   {
-    time: '22:15',
+    time: '22:30',
     titleKey: 'schedule.return',
     locationKey: 'schedule.return.location',
     descriptionKey: 'schedule.return.description',
