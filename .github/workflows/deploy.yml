@@ -33,9 +33,8 @@ jobs:
         run: |
           rm -rf node_modules
           npm cache clean --force
-          npm install
+          npm install --legacy-peer-deps
           npm list
-          echo "Total packages installed: $(npm list --depth=0 | wc -l)"
       - name: Build with Next.js
         run: |
           npm run build
