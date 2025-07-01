@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useRef } from 'react'
 import { useLanguage } from '@/app/context/LanguageContext'
 import Image from 'next/image'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 
 type TimelineEvent = {
   time: string
@@ -47,23 +48,23 @@ export default function InteractiveTimeline({ events, className = '' }: Timeline
     >
       {/* Left arrow */}
       <button
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-warmIvory/80 rounded-full p-2 shadow-md border border-terracotta/20 hover:bg-warmIvory transition disabled:opacity-30"
+        className="absolute -left-4 md:-left-4 left-2 top-1/2 -translate-y-1/2 z-10 bg-warmIvory/90 rounded-full p-3 shadow-lg border border-terracotta/20 hover:bg-warmIvory hover:shadow-xl transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
         onClick={() => goTo(current - 1)}
         disabled={current === 0}
         aria-label="Previous event"
         style={{ display: current === 0 ? 'none' : 'block' }}
       >
-        <span className="text-3xl text-terracotta">&#8592;</span>
+        <ChevronLeftIcon className="w-6 h-6 text-terracotta" />
       </button>
       {/* Right arrow */}
       <button
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-warmIvory/80 rounded-full p-2 shadow-md border border-terracotta/20 hover:bg-warmIvory transition disabled:opacity-30"
+        className="absolute -right-4 md:-right-4 right-2 top-1/2 -translate-y-1/2 z-10 bg-warmIvory/90 rounded-full p-3 shadow-lg border border-terracotta/20 hover:bg-warmIvory hover:shadow-xl transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
         onClick={() => goTo(current + 1)}
         disabled={current === events.length - 1}
         aria-label="Next event"
         style={{ display: current === events.length - 1 ? 'none' : 'block' }}
       >
-        <span className="text-3xl text-terracotta">&#8594;</span>
+        <ChevronRightIcon className="w-6 h-6 text-terracotta" />
       </button>
       {/* Carousel slides */}
       <div className="overflow-hidden w-full">

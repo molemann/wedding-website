@@ -27,7 +27,10 @@ export default function Navigation() {
       // Scroll to details section
       const target = document.querySelector('#details-info')
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth' })
+        target.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
         setActiveSection('details')
         setHasScrolled(true)
         setIsManualNavigation(true)
@@ -37,7 +40,10 @@ export default function Navigation() {
       // Scroll to RSVP section
       const target = document.querySelector('#rsvp')
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth' })
+        target.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
         setActiveSection('rsvp')
         setHasScrolled(true)
         setIsManualNavigation(true)
@@ -77,12 +83,30 @@ export default function Navigation() {
           { name: 'details', id: 'details-info' },
           { name: 'rsvp', id: 'rsvp' }
         ]
-        const currentSection = sections.find(section => {
+        // Find the section that is most visible in the viewport
+        let currentSection = null
+        let maxVisibility = 0
+        
+        for (const section of sections) {
           const element = document.getElementById(section.id)
-          if (!element) return false
+          if (!element) continue
+          
           const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
-        })
+          const viewportHeight = window.innerHeight
+          
+          // Calculate how much of the section is visible
+          const visibleTop = Math.max(0, rect.top)
+          const visibleBottom = Math.min(viewportHeight, rect.bottom)
+          const visibleHeight = Math.max(0, visibleBottom - visibleTop)
+          
+          // Calculate visibility percentage
+          const visibility = visibleHeight / Math.min(rect.height, viewportHeight)
+          
+          if (visibility > maxVisibility) {
+            maxVisibility = visibility
+            currentSection = section
+          }
+        }
         if (currentSection) {
           setActiveSection(currentSection.name)
           
@@ -120,11 +144,15 @@ export default function Navigation() {
     e.preventDefault()
     console.log('Action button clicked:', href)
     
-    // Simple scroll to section
+    // Use native scrollIntoView with proper options
     const target = document.querySelector(href)
     if (target) {
       console.log('Found target, scrolling...')
-      target.scrollIntoView({ behavior: 'smooth' })
+      
+      target.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      })
       
       // Update URL
       if (href === '#details-info') {
@@ -134,22 +162,20 @@ export default function Navigation() {
       }
     } else {
       console.log('Target not found for:', href)
+      // If target not found, navigate to home page with the section hash
+      router.push(`/${href}`)
     }
   }
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
+    console.log('Link clicked:', href, 'isOpen:', isOpen)
     
     setIsManualNavigation(true)
     
     if (href === '#home') {
-      // Scroll to top of the page
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      })
-      
-      window.history.pushState({}, '', '/')
+      // Navigate to home page
+      router.push('/')
       setHasScrolled(false)
       setActiveSection('home')
       
@@ -158,8 +184,13 @@ export default function Navigation() {
       }, 1000)
     } else {
       const target = document.querySelector(href)
+      console.log('Target found:', target)
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth' })
+        // Use native scrollIntoView with proper options
+        target.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
         
         const sectionName = href.replace('#', '')
         if (sectionName === 'details-info') {
@@ -175,13 +206,82 @@ export default function Navigation() {
         setTimeout(() => {
           setIsManualNavigation(false)
         }, 1000)
+      } else {
+        // If target not found, navigate to home page with the section hash
+        router.push(`/${href}`)
+        setHasScrolled(true)
+        
+        const sectionName = href.replace('#', '')
+        if (sectionName === 'details-info') {
+          setActiveSection('details')
+        } else if (sectionName === 'rsvp') {
+          setActiveSection('rsvp')
+        }
+        
+        setTimeout(() => {
+          setIsManualNavigation(false)
+        }, 1000)
       }
     }
     
-    // Delay closing the menu on mobile to ensure the scroll action fires
+    // Close mobile menu after scroll action is initiated
     if (isOpen) {
-      setTimeout(() => setIsOpen(false), 300);
+      setTimeout(() => setIsOpen(false), 100);
     }
+  }
+
+  const handleMobileLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    e.stopPropagation()
+    console.log('Mobile link clicked:', href)
+    
+    // Close menu immediately
+    setIsOpen(false)
+    
+    // Force a small delay to ensure menu closes before scrolling
+    setTimeout(() => {
+      const target = document.querySelector(href)
+      console.log('Mobile target found:', target)
+      if (target) {
+        target.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
+        
+        const sectionName = href.replace('#', '')
+        if (sectionName === 'details-info') {
+          window.history.pushState({}, '', '/detalles')
+          setActiveSection('details')
+        } else if (sectionName === 'rsvp') {
+          window.history.pushState({}, '', '/rsvp')
+          setActiveSection('rsvp')
+        } else if (sectionName === 'home') {
+          window.history.pushState({}, '', '/')
+          setActiveSection('home')
+        }
+        
+        setHasScrolled(sectionName !== 'home')
+        setIsManualNavigation(true)
+        setTimeout(() => setIsManualNavigation(false), 1000)
+      } else {
+        // If target not found, navigate to home page with the section hash
+        router.push(`/${href}`)
+        setHasScrolled(true)
+        
+        const sectionName = href.replace('#', '')
+        if (sectionName === 'details-info') {
+          setActiveSection('details')
+        } else if (sectionName === 'rsvp') {
+          setActiveSection('rsvp')
+        } else if (sectionName === 'home') {
+          setActiveSection('home')
+          setHasScrolled(false)
+        }
+        
+        setIsManualNavigation(true)
+        setTimeout(() => setIsManualNavigation(false), 1000)
+      }
+    }, 150)
   }
 
   return (
@@ -306,13 +406,19 @@ export default function Navigation() {
           >
             <div className="px-4 py-2 space-y-2">
               {links.map((link) => {
-                const isActive = activeSection === link.href.replace('#', '')
+                // Map href to activeSection for proper highlighting (same as desktop)
+                const hrefToSectionMap: { [key: string]: string } = {
+                  '#home': 'home',
+                  '#details-info': 'details',
+                  '#rsvp': 'rsvp'
+                }
+                const isActive = activeSection === hrefToSectionMap[link.href]
                 
                 return (
                   <a
                     key={link.href}
                     href={link.href}
-                    onClick={(e) => handleLinkClick(e, link.href)}
+                    onClick={(e) => handleMobileLinkClick(e, link.href)}
                     className={`block py-2 px-4 rounded-lg font-serif text-lg transition-colors ${
                       isActive 
                         ? 'bg-terracotta/10 text-terracotta'

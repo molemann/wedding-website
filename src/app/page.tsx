@@ -147,7 +147,10 @@ export default function Home() {
     setError(null)
     
     try {
-      const response = await fetch('/api/rsvp', {
+      // Webhook URL - this will work in both development and production
+      const webhookUrl = 'https://hook.eu2.make.com/kxh431u9kp26sjwmss8jhrl6ribsmmv9'
+      
+      const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -176,12 +179,67 @@ export default function Home() {
       ...prev,
       [name]: value
     }))
+    
+    // Auto-resize textarea if it's a textarea element
+    if (e.target.tagName === 'TEXTAREA') {
+      const textarea = e.target as HTMLTextAreaElement
+      textarea.style.height = 'auto'
+      textarea.style.height = `${textarea.scrollHeight}px`
+    }
   }
 
   const isAttending = formData.attending === 'yes'
 
   return (
     <div className="relative">
+      {/* Confetti - moved to root level */}
+      {showLeaves && (
+        <Confetti
+          width={width}
+          height={height}
+          recycle={false}
+          numberOfPieces={500}
+          gravity={0.15}
+          wind={0.01}
+          friction={0.99}
+          confettiSource={{
+            x: 0,
+            y: height * 0.3,
+            w: width,
+            h: 60
+          }}
+          colors={['#8B4513', '#A0522D', '#D2691E', '#CD853F', '#DEB887', '#F4A460', '#DAA520']}
+          drawShape={(ctx) => {
+            // Random confetti shapes - squares, rectangles, and circles
+            const shapeType = Math.random()
+            const size = 3 + Math.random() * 4
+            
+            if (shapeType < 0.4) {
+              // Square confetti
+              ctx.fillRect(-size/2, -size/2, size, size)
+            } else if (shapeType < 0.7) {
+              // Rectangle confetti
+              const width = size
+              const height = size * (0.5 + Math.random() * 0.5)
+              ctx.fillRect(-width/2, -height/2, width, height)
+            } else {
+              // Circle confetti
+              ctx.beginPath()
+              ctx.arc(0, 0, size/2, 0, 2 * Math.PI)
+              ctx.fill()
+            }
+          }}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            pointerEvents: 'none',
+            zIndex: 9999
+          }}
+        />
+      )}
       {/* Hero Section */}
       <section 
         id="home" 
@@ -190,6 +248,7 @@ export default function Home() {
             ? 'h-screen justify-center' 
             : 'justify-between pt-[250px] pb-[450px]'
         }`}
+        style={{ scrollMarginTop: '100px' }}
       >
         {/* Background Video */}
         <video 
@@ -200,8 +259,21 @@ export default function Home() {
           muted
           playsInline
         >
+          {/* Mobile optimized version (480p) - for small mobile devices */}
           <source 
-            src={isMobile ? "/images/mobile-video.mp4" : "/images/desktop-video.mp4"} 
+            src="/images/mobile-video-480.mp4" 
+            type="video/mp4" 
+            media="(max-width: 600px)" 
+          />
+          {/* Standard mobile version - for tablets and larger mobile devices */}
+          <source 
+            src="/images/mobile-video.mp4" 
+            type="video/mp4" 
+            media="(max-width: 1024px)" 
+          />
+          {/* Desktop version - for desktop and large screens */}
+          <source 
+            src="/images/desktop-video.mp4" 
             type="video/mp4" 
           />
         </video>
@@ -240,7 +312,7 @@ export default function Home() {
       {/* Details Section */}
       <section className="flex flex-col md:flex-row w-full">
         {/* Details Info Section */}
-        <section id="details-info" className="w-full md:w-1/2 px-4 sm:px-6 lg:px-8 text-deepNavy relative bg-[url('/images/parchment-texture.png')] bg-cover bg-center bg-no-repeat" style={{ paddingTop: 50 }}>
+        <section id="details-info" className="w-full md:w-1/2 px-4 sm:px-6 lg:px-8 text-deepNavy relative bg-[url('/images/parchment-texture.png')] bg-cover bg-center bg-no-repeat" style={{ paddingTop: 50, scrollMarginTop: '100px' }}>
           {/* Background overlay */}
           <div className="absolute inset-0 bg-[rgba(244,241,222,0.9)]"></div>
           
@@ -308,7 +380,7 @@ export default function Home() {
                 transition={{ delay: 0.6, duration: 0.8 }}
               >
                 <h1 className="text-4xl md:text-6xl font-serif text-center text-deepNavy mb-2">{t('schedule.title')}</h1>
-                <div className="text-terracotta mb-6 text-xl text-center">{t('schedule.subtitle')}</div>
+                <div className="text-terracotta mb-6 md:mb-0 text-xl text-center">{t('schedule.subtitle')}</div>
                 <InteractiveTimeline events={scheduleEvents} className="w-full" />
               </motion.div>
             </div>
@@ -317,7 +389,7 @@ export default function Home() {
       </section>
 
       {/* RSVP Section */}
-      <section id="rsvp" className="py-20 px-4 sm:px-6 lg:px-8 relative bg-[url('/images/parchment-texture.png')] bg-cover bg-center bg-no-repeat">
+      <section id="rsvp" className="py-20 px-4 sm:px-6 lg:px-8 relative bg-[url('/images/parchment-texture.png')] bg-cover bg-center bg-no-repeat" style={{ scrollMarginTop: '100px' }}>
         {/* Background overlay */}
         <div className="absolute inset-0 bg-[rgba(244,241,222,0.9)]"></div>
         
@@ -455,22 +527,29 @@ export default function Home() {
                             id="dietaryRestrictions"
                             name="dietaryRestrictions"
                             placeholder={t('rsvp.dietary.placeholder')}
-                            className="w-full p-3 rounded-md border border-terracotta/20 focus:border-terracotta focus:ring-1 focus:ring-terracotta"
+                            className="w-full p-3 rounded-md border border-terracotta/20 focus:border-terracotta focus:ring-1 focus:ring-terracotta min-h-[120px] md:min-h-[100px] resize-none"
                             value={formData.dietaryRestrictions}
                             onChange={handleChange}
+                            rows={4}
+                            style={{
+                              resize: 'none'
+                            }}
                           />
                         </div>
 
                         <div>
                           <label htmlFor="songRequest" className="block text-deepNavy mb-2 font-bold">{t('rsvp.song')}</label>
-                          <input
-                            type="text"
+                          <textarea
                             id="songRequest"
                             name="songRequest"
                             placeholder={t('rsvp.song.placeholder')}
-                            className="w-full p-3 rounded-md border border-terracotta/20 focus:border-terracotta focus:ring-1 focus:ring-terracotta"
+                            className="w-full p-3 rounded-md border border-terracotta/20 focus:border-terracotta focus:ring-1 focus:ring-terracotta min-h-[120px] md:min-h-[100px] resize-none"
                             value={formData.songRequest}
                             onChange={handleChange}
+                            rows={4}
+                            style={{
+                              resize: 'none'
+                            }}
                           />
                         </div>
 
@@ -480,9 +559,13 @@ export default function Home() {
                             id="extraInfo"
                             name="extraInfo"
                             placeholder={t('rsvp.extra.placeholder')}
-                            className="w-full p-3 rounded-md border border-terracotta/20 focus:border-terracotta focus:ring-1 focus:ring-terracotta"
+                            className="w-full p-3 rounded-md border border-terracotta/20 focus:border-terracotta focus:ring-1 focus:ring-terracotta min-h-[120px] md:min-h-[100px] resize-none"
                             value={formData.extraInfo}
                             onChange={handleChange}
+                            rows={4}
+                            style={{
+                              resize: 'none'
+                            }}
                           />
                         </div>
                       </>
@@ -526,31 +609,6 @@ export default function Home() {
                 >
                   {language === 'es' ? 'Rellenar otro formulario' : 'Fill another form'}
                 </button>
-                {showLeaves && (
-                  <Confetti
-                    width={width}
-                    height={height}
-                    recycle={false}
-                    numberOfPieces={100}
-                    gravity={0.3}
-                    wind={0.05}
-                    confettiSource={{
-                      x: 0,
-                      y: 0,
-                      w: width,
-                      h: 0
-                    }}
-                    colors={['#8B4513', '#A0522D', '#D2691E', '#CD853F', '#DEB887']}
-                    drawShape={(ctx) => {
-                      ctx.beginPath()
-                      ctx.moveTo(0, 0)
-                      ctx.lineTo(10, 0)
-                      ctx.lineTo(5, 15)
-                      ctx.closePath()
-                      ctx.fill()
-                    }}
-                  />
-                )}
               </motion.div>
             )}
           </AnimatePresence>
