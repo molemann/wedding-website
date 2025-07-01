@@ -146,7 +146,7 @@ const translations: Translations = {
     'nav.home': 'Inicio',
     'nav.details': 'Detalles',
     'nav.story': 'Nuestra Historia',
-    'nav.rsvp': 'Confirmar',
+    'nav.rsvp': 'Confirmar asistencia',
     'nav.faqs': 'Preguntas Frecuentes',
     'wedding.details': 'Te esperamos en...',
     'wedding.subtitle': 'La Cúpula de la Finca Miravalle',
