@@ -258,6 +258,7 @@ export default function Home() {
           loop
           muted
           playsInline
+          poster={isMobile ? "/images/mobile-video (poster).jpg" : "/images/desktop-video (poster).jpg"}
         >
           {/* Mobile optimized version (480p) - for small mobile devices */}
           <source 
