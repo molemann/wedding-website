@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description: "¡Nos casamos y nos encantaría que lo celebraras con nosotros!",
     images: [
       {
-        url: '/images/MP-logo.png',
+        url: 'https://molemann.github.io/wedding-website/images/MP-logo.png',
         width: 1200,
         height: 630,
         alt: 'Miriam & Pablo Wedding Logo',
