@@ -21,7 +21,7 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: "Miriam & Pablo",
-  description: "Join us for our wedding celebration in Madrid",
+  description: "¡Nos casamos y nos encantaría que lo celebraras con nosotros!",
   robots: {
     index: false,
     follow: false,
@@ -32,12 +32,31 @@ export const metadata: Metadata = {
       noimageindex: true,
     },
   },
+  openGraph: {
+    title: "Miriam & Pablo - Wedding Celebration",
+    description: "¡Nos casamos y nos encantaría que lo celebraras con nosotros!",
+    images: [
+      {
+        url: '/images/MP-logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Miriam & Pablo Wedding Logo',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Miriam & Pablo - Wedding Celebration",
+    description: "¡Nos casamos y nos encantaría que lo celebraras con nosotros!",
+    images: ['/images/MP-logo.png'],
+  },
   icons: {
     icon: [
-      { url: '/images/doge-favicon.png', type: 'image/png' }
+      { url: '/images/MP-logo.png', type: 'image/png' }
     ],
     apple: [
-      { url: '/images/doge-favicon.png', sizes: '180x180', type: 'image/png' }
+      { url: '/images/MP-logo.png', sizes: '180x180', type: 'image/png' }
     ]
   }
 };
@@ -50,10 +69,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${montserrat.variable}`}>
       <head>
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/doge-favicon.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/images/doge-favicon.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/images/doge-favicon.png" />
-        <meta name="msapplication-TileImage" content="/images/doge-favicon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/MP-logo.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/MP-logo.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/MP-logo.png" />
+        <meta name="msapplication-TileImage" content="/images/MP-logo.png" />
         <link rel="preload" href="/fonts/TAN-Pearl.otf" as="font" type="font/otf" crossOrigin="anonymous" />
       </head>
       <body className="font-body text-deepNavy relative min-h-screen flex flex-col">

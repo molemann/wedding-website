@@ -613,6 +613,30 @@ export default function Home() {
               </motion.div>
             )}
           </AnimatePresence>
+          {/* Gift/IBAN message below the RSVP form */}
+          <div className="mt-10 text-center">
+            <hr className="my-8 mx-auto border-t border-terracotta w-1/3 opacity-50 rounded-full" />
+            {language === 'es' ? (
+              <>
+                <p className="text-lg text-deepNavy font-serif mb-2">
+                  Vuestra presencia siempre será el mayor de los regalos,<br />
+                  pero si queréis ayudarnos a conseguir la Luna de Miel de nuestros sueños, os dejamos nuestro número de cuenta:
+                </p>
+                <div className="text-base font-mono tracking-wider text-terracotta mt-4 select-all font-semibold">
+                  ES07 0186 5001 69 0525572611
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="text-lg text-deepNavy font-serif mb-2">
+                  Your presence is the greatest gift, but if you'd like to help us make our dream honeymoon come true, here is our bank account number:
+                </p>
+                <div className="text-base font-mono tracking-wider text-terracotta mt-4 select-all font-semibold">
+                  ES07 0186 5001 69 0525572611
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </section>
     </div>
