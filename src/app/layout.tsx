@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Miriam & Pablo - Wedding Celebration",
+    title: "Miriam & Pablo - Nuestra Boda",
     description: "¡Nos casamos y nos encantaría que lo celebraras con nosotros!",
     images: [
       {
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Miriam & Pablo - Wedding Celebration",
+    title: "Miriam & Pablo - Nuestra Boda",
     description: "¡Nos casamos y nos encantaría que lo celebraras con nosotros!",
     images: ['/images/MP-logo.png'],
   },
